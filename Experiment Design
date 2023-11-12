@@ -1,0 +1,14 @@
+> Car <- as . factor ( c ( rep (1 ,4) , rep (2 ,4) , rep (3 ,4) , rep (4 ,4)))
+> Tyre <- as . factor ( rep (1:4 ,4))
+> Improver <- as . factor ( c (1 ,2 ,3 ,4 ,4 ,1 ,2 ,3 ,2 ,3 ,4 ,1 ,3 ,4 ,1 ,2))
+> fix ( Wear )
+> Wear <- 40 -4 * ( Car ==2)+10 * ( Car ==3)+6 * ( Car ==4)+( Tyre ==2) -5 * ( Tyre ==3) -
++ 4 * ( Tyre ==4)+5 * ( Improver ==2) -5 * ( Improver ==3) -10 * ( Improver ==4)+
++ rnorm (16 ,0 ,5)
+> Wear <- data . frame ( cbind ( Car , Tyre , Improver , Wear ))
+> Improver2 <- as . numeric ( Improver == 2)
+> Improver3 <- as . numeric ( Improver == 3)
+> Improver4 <- as . numeric ( Improver == 4)
+> model23 <- lm ( Wear ~ Car + Tyre
++ Improver2 + Improver3 + Improver4 , data = Wear )
+> summary ( model23 )
